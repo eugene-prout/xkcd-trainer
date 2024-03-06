@@ -5,4 +5,3 @@ import Main from './pages/Main.vue'
 <template>
     <Main />
 </template>
-
