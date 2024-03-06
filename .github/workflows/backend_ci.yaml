@@ -9,9 +9,6 @@ jobs:
   build:
     name: Build and Publish Image
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./backend
     steps:
     - uses: actions/checkout@v3
       
@@ -25,6 +22,6 @@ jobs:
     - name: Build and push Docker images
       uses: docker/build-push-action@v4.1.1
       with:
-        context: .
+        context: ./backend
         push: true
         tags:  ${{ secrets.REGISTRY_LOGIN_SERVER }}/xkcdtrainer/backend:${{ github.sha }}
