@@ -42,7 +42,7 @@ function handleNext() {
     setTimeout(() => {
         currentData.value = nextData.value;
         nextData.value = popFromCache();
-    }, 500)
+    }, 250)
 }
 
 onMounted(async () => {
@@ -61,11 +61,21 @@ onMounted(async () => {
                 <div class="containerfront"
                     style="background-color: #ffffff; height: 100%;box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
 
+                    <div>
+                    </div>
+
                     <div class="caption">
                         <h3>{{ currentData.id }}</h3>
-                    </div>
-                    <div class="caption">
+
                         <h3><i>{{ currentData.title }}</i></h3>
+                    </div>
+
+                    <div>
+                        <h3 style="align-self: flex-end">
+                            <a href="https://prout.tech/projects/xkcd-trainer" @click.stop="" target="_blank">
+                                <i>?</i>
+                            </a>
+                        </h3>
                     </div>
                 </div>
             </template>
@@ -73,12 +83,15 @@ onMounted(async () => {
             <template v-slot:back>
                 <div class="container"
                     style="background-color: #ffffff; height: 100%; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+                    
                     <div class="caption">
                         <h3>{{ currentData.id }}</h3>
                         <br />
                         <h3><i>{{ currentData.title }}</i></h3>
                     </div>
+
                     <img class="image" v-bind:src="currentData.image_url" alt="Image">
+                    
                     <button @click="handleNext">Next</button>
                 </div>
             </template>
@@ -100,7 +113,6 @@ onMounted(async () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Center items horizontally */
     justify-content: space-between;
     padding: 10px;
 }
@@ -109,25 +121,18 @@ onMounted(async () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* flex-wrap: nowrap; */
-    /* flex-shrink: 1; */
-    /* Center items horizontally */
-    justify-content: center;
+    justify-content: space-around;
     padding: 10px;
 }
 
 .image {
     min-width: 0;
     min-height: 0;
-    max-width:100%;
-
+    max-width: 100%;
     padding: 10px;
 }
 
 .caption {
-    /* margin-top: 10px; Add some spacing between image and caption */
     text-align: center;
-    /* Center the caption text */
-    /* font-style: italic; */
 }
 </style>
